@@ -14,7 +14,7 @@ To run a container on port 8887, for example, overriding the default port 5000, 
 like this (note the `-e` parameter used to pass the Geonames username):
 
 ``` 
-docker run --name geonames -d -p 8877:5000 -e GEONAMES_USERNAME=<username> pixelandpen/geonames
+docker run --name geonames -d -p 8877:5000 -e GEONAMES_USERNAME=<username> pixelandpen/geonames-reconcile
 ```
 
 ## About
