@@ -7,14 +7,14 @@ until you have a username available.
 To build the Docker image, use something like:
 
 ```
-docker build -t pixelandpen/geonames-reconcile .
+docker build -t geonames-reconcile .
 ```
 
 To run a container on port 8887, for example, overriding the default port 5000, do something 
 like this (note the `-e` parameter used to pass the Geonames username):
 
 ``` 
-docker run --name geonames -d -p 8877:5000 -e GEONAMES_USERNAME=<username> pixelandpen/geonames-reconcile
+docker run --name geonames -p 8877:5000 -e GEONAMES_USERNAME=<username> geonames-reconcile
 ```
 
 ## About
@@ -47,12 +47,13 @@ So this service takes Library of Congress authorities headings (or headings form
 
 ##Instructions
 
-Before getting started, you'll need python on your computer (this was built with python 2.7.8, updated to work with python3.4, most recently tested and worked with python 2.7.10 and 3.4.3) and be comfortable using OpenRefine/Google Refine.
+Before getting started, you'll need Python on your computer (this was built with python 2.7.8, updated to work with Python 3.7.3, and be comfortable using OpenRefine.
 
 This reconciliation service also requires a GeoNames API username. You can find and use the one used in the original code for testing, but you'll run against maximum number counts quickly, so it is strongly recommended you get your own (free, quick & easy to obtain) GeoNames account.
 
 To do so, go to this webpage and register: http://www.geonames.org/login
-After your account is activated, enable it for free web services: http://www.geonames.org/manageaccount
+After your account is activated, make sure you have enabled free web services: http://www.geonames.org/manageaccount. If you have not, you will encounter a 500 Service Error.
+
 
 - Once you have your GeoNames username, create an environment variable on your computer with your Geonames username as so:
 	- Open the Command Line Interface of your choice (Terminal on is default on a Mac)
@@ -80,11 +81,6 @@ After your account is activated, enable it for free web services: http://www.geo
 	- URI: `cell.recon.match.id` (will pull the GeoNames URI/link)
 	- Coordinates Only: `replace(substring(cell.recon.match.name, indexOf(cell.recon.match.name, ' | ')), ' | ', '')`
 	- Name, Coordinates, and URI each separated by | (for easier column splitting later): `cell.recon.match.name + " | " + cell.recon.match.id`
-
-I'll maybe make a screencast of this work later if I get time or there is interested.
-
-Holla if you have questions - email is charlow2(at)utk(dot)edu and Twitter handle is @cm_harlow
-
 
 ## Plans for Improvement
 
