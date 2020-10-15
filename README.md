@@ -1,4 +1,23 @@
-##About
+## Docker instructions
+
+As per the information later in this file, you will need a username from
+Geonames (http://www.geonames.org/) in order to use their API. Do not proceed
+until you have a username available.
+
+To build the Docker image, use something like:
+
+```
+docker build -t pixelandpen/geonames-reconcile .
+```
+
+To run a container on port 8887, for example, overriding the default port 5000, do something 
+like this (note the `-e` parameter used to pass the Geonames username):
+
+``` 
+docker run --name geonames -d -p 8877:5000 -e GEONAMES_USERNAME=<username> pixelandpen/geonames-reconcile
+```
+
+## About
 
 An OpenRefine reconciliation service for [GeoNames](http://www.geonames.org/).
 
@@ -11,13 +30,13 @@ I'm just a small-town metadataist in a big code world, so please don't assume I 
 
 If you'd like to hear my thoughts about why do this instead of creating a column by pulling in URLs, or what I do with this data once I export my data to metadata records, or if we should even have to keep coordinates in bibliographic metadata records, see some thoughts here: http://christinaharlow.com/thoughts-on-geospatial-metadata and http://christinaharlow.com/walkthrough-of-geonames-recon-service
 
-##Provenance
+## Provenance
 
 Michael Stephens wrote a [demo reconcilliation service](https://github.com/mikejs/reconcile-demo) and Ted Lawless wrote a [FAST reconciliation service](https://github.com/lawlesst/fast-reconcile) that this code basically repeats but for a different API.
 
 Please give any thanks for this work to Ted Lawless, and any complaints to Christina. Also give thanks to Trevor Muñoz for some cleanups to make this code easier to work with.
 
-##Special Notes
+## Special Notes
 
 This came out of frustration that the Library of Congress authorities are:
 
@@ -67,7 +86,7 @@ I'll maybe make a screencast of this work later if I get time or there is intere
 Holla if you have questions - email is charlow2(at)utk(dot)edu and Twitter handle is @cm_harlow
 
 
-##Plans for Improvement
+## Plans for Improvement
 
 I'm hoping to build in next a way for searching within reconciliation cells next.
 
